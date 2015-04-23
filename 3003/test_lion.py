@@ -17,16 +17,15 @@ class Test_Lion(TestCase):
         self.assertEqual(self.table, self.lion.table_state, 'table_state have wrong value')
 
     def test_init_exception_status(self):
-        self.assertRaises(Exception, Lion.__init__, "", self.table )
+        self.assertRaises(Exception, Lion, "", self.table )
 
     def test_init_exception_table(self):
-        self.assertRaises(Exception, Lion.__init__, self.state_In, "" )
+        self.assertRaises(Exception, Lion, self.state_In, "" )
 
     def test_init_exception_status_in_table(self):
-        self.assertRaises(Exception, Lion.__init__, "Error_State", self.table )
+        self.assertRaises(Exception, Lion, "Error_State", self.table )
 
     def test_action(self):
-
         self.lion = Lion(self.state_In, self.table)
         self.lion.isAction("test_object")
         self.assertEqual(self.state_Out, self.lion.state, 'State_Out have wrong value')
