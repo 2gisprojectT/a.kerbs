@@ -12,11 +12,14 @@ class Lion:
 
         self.error = None
         s = list(table_state.keys())
-        for i in s:
-            if state == i[0]:
-                self.error = 'State in Table State'
-        if self.error == None:
-            Exception('status is not in the table state: ' + state)
+        s = list(set(e[0] for e in s))
+        if not (state in s):
+           raise Exception('status is not in the table state: ' + state)
+        #for i in s:
+        #    if state == i[0]:
+        #        self.error = 'State in Table State'
+        #if self.error == None:
+        #    Exception('status is not in the table state: ' + state)
 
         self.action = ""
         self.state = state
