@@ -1,0 +1,71 @@
+Pairwise Testing
+
+тетируемый объект: поисковая страница https://vk.com/video?q=name%5C&section=search протестируем несколько параметров
+тестируемые входные данные:"по длительности","по дате",Сортировка"
+
+"duration" содержит параметры: Any_duration, Long, Short
+"date" содержит параметры: Any_Time, 24_hours, Month, Year
+"Order" содержит параметры: Relevance, Date, Duration
+
+теперь составляем набор тест кейсов методом Pairwise Testing.
+Наборы тесткейсов
+
+Test Run         duration         date             Order            
+
+1                Any_duration     24_hours         Date             
+
+2                Any_duration     Any_Time         Relevance        
+
+3                Any_duration     Month            Duration         
+
+4                Long             24_hours         Relevance        
+
+5                Long             Any_Time         Date             
+
+6                Long             Year             Duration         
+
+7                Short            Any_Time         Duration         
+
+8                Short            Month            Relevance        
+
+9                Short            Year             Date             
+
+10               Any_duration     Year             Relevance        
+
+11               Long             Month            Date             
+
+12               Short            24_hours         Duration      
+
+
+
+Тест-Кейс
+Название: проверка расширенного поиска видео vk.com
+Предусловия:
+      1)перейти на страницу: https://vk.com/video?q=name&section=search
+Шаги:
+      1) Цикл по номеру тест кейса начиная с 1 заканчивая 12
+      2) выбрать значение duration в зависимости от номера тест кейса
+      3) выбрать значение date в зависимости от номера тест кейса
+      4) Order значение duration в зависимости от номера тест кейса
+      5) проверить правильно ли построен результат
+Ожидаемый Результат:
+      Элементы отсортированны в нужном порядке.
+
+Баг Репорт:
+  Короткое описание:Сортировка видео не работает
+  Проект: Vk.com
+  Номер версии: Неизвестно
+  Важность: S4 незначительная(Minor)
+  Приоритет: (устанавливается менеджером)
+  Статус: Новая
+	Автор: Кербс Александр
+	Назначен на: Петр Петров
+  Шаги воспроизведения
+    1)перейти на страницу: https://vk.com/video?q=name&section=search
+    2) Введем параметр в окно Duration - Long
+    3) Введем параметр в окно Duration - Any Time
+    4) Введем параметр в окно Duration - Date
+  Фактический результат:
+    В списке видео рольков присутствуют короткие роликию
+  Ожидаемый результат:
+    длинные ролики отсортированы по времени.
